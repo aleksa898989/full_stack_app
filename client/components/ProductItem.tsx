@@ -1,24 +1,16 @@
 import Image from "next/image";
 import { ProductItem } from "../types/types";
+import { deleteProduct } from "../hooks/useProducts";
 
-const ProductItemComponent = ({
-  id,
-  title,
-  price,
-  description,
-  handleDelete,
-  handleShowEditProductModal,
-}: ProductItem) => {
+const ProductItemComponent = ({ id, title, price, description, handleShowEditProductModal }: ProductItem) => {
+  const thead = ["id", "title", "description", "price", "edit", "delete"];
   return (
     <table className="table-auto">
       <thead>
         <tr>
-          <th>id</th>
-          <th>title</th>
-          <th>description</th>
-          <th>price</th>
-          <th>edit</th>
-          <th>delete</th>
+          {thead.map((item, index) => (
+            <th key={index}>{item}</th>
+          ))}
         </tr>
       </thead>
       <tbody>
@@ -36,7 +28,7 @@ const ProductItemComponent = ({
           </td>
           <td
             onClick={() => {
-              handleDelete && handleDelete(id);
+              deleteProduct(id);
             }}
           >
             delete

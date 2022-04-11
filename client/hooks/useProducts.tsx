@@ -27,11 +27,31 @@ const useSingleProduct = (id: string) => {
 };
 
 const deleteProduct = (id: string) => {
-  try {
-    axios.get(`http://localhost:3000/products/${id}`);
-  } catch (error) {
-    console.log(error);
-  }
+  axios
+    .delete(`http://localhost:3000/products/${id}`)
+    .then((response) => {
+      console.log(response);
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
-export { useProducts, useSingleProduct, deleteProduct };
+const updateProduct = (data: ProductItem) => {
+  axios
+    .patch(`http://localhost:3000/products/${data.id}`, {
+      title: data.title,
+      description: data.description,
+      price: data.price,
+    })
+    .then((response) => {
+      console.log(response);
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export { useProducts, useSingleProduct, deleteProduct, updateProduct };

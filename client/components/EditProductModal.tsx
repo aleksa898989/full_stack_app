@@ -1,10 +1,9 @@
-import axios from "axios";
-import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Modal from "react-ts-modal";
 import { InputTypes } from "../types/types";
 import Button from "../uiComponents/Button/Button";
 import Input from "../uiComponents/Input/Input";
+import { updateProduct } from "../hooks/useProducts";
 
 type EditProductModalProps = {
   id: string;
@@ -20,32 +19,20 @@ const EditNewProductModal = ({ id, title, description, price }: EditProductModal
     formState: { errors },
   } = useForm<InputTypes>({
     defaultValues: {
+      id: id,
       title: title,
       description: description,
       price: price,
     },
   });
 
-  const router = useRouter();
-
   const onSubmit: SubmitHandler<InputTypes> = (data) => {
-    axios
-      .patch(`http://localhost:3000/products/${id}`, {
-        title: data.title,
-        description: data.description,
-        price: data.price,
-      })
-      .then((response) => {
-        console.log(response);
-        router.reload();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    updateProduct(data);
   };
+
   return (
     <Modal name="edit-product-modal">
-      <h1>Edit product</h1>
+      <h1>Edit {title}</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input error={errors.title} register={register} name="title" type="text" />
         <Input error={errors.description} register={register} name="description" type="text" />

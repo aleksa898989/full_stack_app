@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.scss";
+import Button from "../uiComponents/Button/Button";
 
 const Home: NextPage = () => {
   return (
@@ -13,7 +14,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Link href={"/products"}>get products</Link>
+        <Button to={"/products"} type="button" text="Get Products" />
       </main>
 
       <footer className={styles.footer}></footer>
