@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "PORT=4000 next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "PORT=4000 next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -13,6 +13,8 @@
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-hook-form": "^7.29.0",
+    "react-ts-modal": "^1.5.9",
     "sass": "^1.50.0"
   },
   "devDependencies": {

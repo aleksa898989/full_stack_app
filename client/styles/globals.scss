@@ -2,13 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html,
 body {
+  .rjsm__modal {
+    position: relative;
+  }
+  .rjsm__modal__close {
+    position: absolute;
+    top: 0;
+    right: 2%;
+  }
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
 }
 
 a {
@@ -20,11 +27,19 @@ a {
   box-sizing: border-box;
 }
 
+table {
+  margin-bottom: 2rem;
+}
+
+td {
+  min-width: 8rem;
+}
+
 @layer components {
   .card {
-    background-color: theme('colors.white');
-    border-radius: theme('borderRadius.lg');
-    padding: theme('spacing.6');
-    box-shadow: theme('boxShadow.xl');
+    background-color: theme("colors.white");
+    border-radius: theme("borderRadius.lg");
+    padding: theme("spacing.6");
+    box-shadow: theme("boxShadow.xl");
   }
 }
