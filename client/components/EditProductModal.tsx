@@ -42,8 +42,8 @@ const EditNewProductModal = ({ id, title, description, price, handleHideEditProd
         </div>
 
         <div className="flex justify-evenly my-4">
-          <Button text="submit" type="submit" />
-          <Button text="close" type="button" onClick={handleHideEditProductModal} />
+          <Button text="Save" type="submit" />
+          <Button text="Close" type="button" onClick={handleHideEditProductModal} />
         </div>
       </form>
     </Modal>
