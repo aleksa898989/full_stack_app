@@ -26,6 +26,22 @@ const useSingleProduct = (id: string) => {
   return singleProduct;
 };
 
+const createProduct = (data: ProductItem) => {
+  axios
+    .post("http://localhost:3000/products", {
+      title: data.title,
+      description: data.description,
+      price: data.price,
+    })
+    .then((response) => {
+      console.log(response);
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 const deleteProduct = (id: string) => {
   axios
     .delete(`http://localhost:3000/products/${id}`)
@@ -54,4 +70,4 @@ const updateProduct = (data: ProductItem) => {
     });
 };
 
-export { useProducts, useSingleProduct, deleteProduct, updateProduct };
+export { useProducts, useSingleProduct, deleteProduct, updateProduct, createProduct };

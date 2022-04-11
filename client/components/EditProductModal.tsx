@@ -10,9 +10,10 @@ type EditProductModalProps = {
   title?: string;
   description?: string;
   price?: number;
+  handleHideEditProductModal: (id: string) => void;
 };
 
-const EditNewProductModal = ({ id, title, description, price }: EditProductModalProps) => {
+const EditNewProductModal = ({ id, title, description, price, handleHideEditProductModal }: EditProductModalProps) => {
   const {
     register,
     handleSubmit,
@@ -31,13 +32,19 @@ const EditNewProductModal = ({ id, title, description, price }: EditProductModal
   };
 
   return (
-    <Modal name="edit-product-modal">
-      <h1>Edit {title}</h1>
+    <Modal name="edit-product-modal" closeButton={false}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Input error={errors.title} register={register} name="title" type="text" />
-        <Input error={errors.description} register={register} name="description" type="text" />
-        <Input error={errors.price} register={register} name="price" type="number" />
-        <Button text="submit" type="submit" />
+        <h1 className="text-center">Edit {title}</h1>
+        <div className="flex flex-col m-5">
+          <Input error={errors.title} register={register} name="title" type="text" />
+          <Input error={errors.description} register={register} name="description" type="text" />
+          <Input error={errors.price} register={register} name="price" type="number" />
+        </div>
+
+        <div className="flex justify-evenly my-4">
+          <Button text="submit" type="submit" />
+          <Button text="close" type="button" onClick={handleHideEditProductModal} />
+        </div>
       </form>
     </Modal>
   );

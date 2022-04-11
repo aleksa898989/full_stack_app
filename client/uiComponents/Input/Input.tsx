@@ -10,7 +10,7 @@ type inputProps = {
 
 const Input = (props: inputProps) => {
   return (
-    <div>
+    <>
       <label htmlFor={props.name}>{props.name} </label>
       <input
         type={props.type}
@@ -22,7 +22,7 @@ const Input = (props: inputProps) => {
       <label>{props.error}</label>
 
       {props.error && <span>This field is required</span>}
-    </div>
+    </>
   );
 };
 

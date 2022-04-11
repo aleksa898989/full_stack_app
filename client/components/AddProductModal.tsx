@@ -1,13 +1,15 @@
-import axios from "axios";
-import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Modal from "react-ts-modal";
+import { createProduct } from "../hooks/useProducts";
 import { InputTypes } from "../types/types";
 import Button from "../uiComponents/Button/Button";
 import Input from "../uiComponents/Input/Input";
 
-const AddEditNewProductModal = () => {
-  const router = useRouter();
+type AddNewProductModalProps = {
+  handleHideAddProductModal: () => void;
+};
+
+const AddEditNewProductModal = ({ handleHideAddProductModal }: AddNewProductModalProps) => {
   const {
     register,
     handleSubmit,
@@ -15,29 +17,23 @@ const AddEditNewProductModal = () => {
   } = useForm<InputTypes>();
 
   const onSubmit: SubmitHandler<InputTypes> = (data) => {
-    axios
-      .post("http://localhost:3000/products", {
-        title: data.title,
-        description: data.description,
-        price: data.price,
-      })
-      .then((response) => {
-        console.log(response);
-        router.reload();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    createProduct(data);
   };
 
   return (
-    <Modal name="add-new-product-modal">
-      <h1>Add new product</h1>
+    <Modal name="add-new-product-modal" closeButton={false}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Input error={errors.title} register={register} name="title" type="text" />
-        <Input error={errors.description} register={register} name="description" type="text" />
-        <Input error={errors.price} register={register} name="price" type="number" />
-        <Button text="submit" type="submit" />
+        <h1 className="text-center">Add new product</h1>
+        <div className="flex flex-col m-5">
+          <Input error={errors.title} register={register} name="title" type="text" />
+          <Input error={errors.description} register={register} name="description" type="text" />
+          <Input error={errors.price} register={register} name="price" type="number" />
+        </div>
+
+        <div className="flex justify-evenly my-4">
+          <Button text="Save" type="submit" />
+          <Button text="Close" type="button" onClick={handleHideAddProductModal} />
+        </div>
       </form>
     </Modal>
   );

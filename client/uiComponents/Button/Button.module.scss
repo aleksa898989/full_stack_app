@@ -2,10 +2,10 @@
   border: 0 solid #e2e8f0;
   cursor: pointer;
   --bg-opacity: 1 !important;
-  background-color: rgba(66, 153, 225, var(--bg-opacity)) !important;
+  background-color: rgba(66, 153, 225, var(--bg-opacity));
   border-radius: 0.25rem;
   font-weight: 700;
   padding: 0.5rem 1rem;
   --text-opacity: 1 !important;
-  color: rgba(255, 255, 255, var(--text-opacity)) !important;
+  color: rgba(255, 255, 255, var(--text-opacity));
 }

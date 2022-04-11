@@ -28,18 +28,25 @@ a {
 }
 
 table {
-  margin-bottom: 2rem;
+  margin: 3rem 0;
 }
 
 td {
+  text-align: center;
   min-width: 8rem;
 }
 
-@layer components {
-  .card {
-    background-color: theme("colors.white");
-    border-radius: theme("borderRadius.lg");
-    padding: theme("spacing.6");
-    box-shadow: theme("boxShadow.xl");
+.rjsm__modal {
+  .rjsm__modal__close {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 1rem;
+  }
+}
+
+.rjsm__modal__content {
+  h1 {
+    margin: 2rem 0;
   }
 }
